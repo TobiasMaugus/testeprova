@@ -6,7 +6,7 @@ final class Connection{
         $type = "mysql";
         $user = "alunos";
         $pass = "cefetmg";
-        $name = "alunos";
+        $name = "testeprova";
         $host = "localhost";
         switch ($type) {
       case 'pgsql':

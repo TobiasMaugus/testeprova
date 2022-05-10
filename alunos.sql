@@ -23,14 +23,14 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Estrutura para tabela `cardapio`
+-- Estrutura para tabela `tvbox`
 --
 
-CREATE TABLE `cardapio` (
+CREATE TABLE `tvbox` (
   `id` int(10) UNSIGNED NOT NULL,
-  `prato` varchar(100) NOT NULL,
-  `ingredientes` text NOT NULL,
-  `preco` float NOT NULL
+  `modelo` varchar(100) NOT NULL,
+  `processador` text NOT NULL,
+  `sistemaoperacional` float NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -51,9 +51,9 @@ CREATE TABLE `usuario` (
 --
 
 --
--- Índices de tabela `cardapio`
+-- Índices de tabela `tvbox`
 --
-ALTER TABLE `cardapio`
+ALTER TABLE `tvbox`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -67,9 +67,9 @@ ALTER TABLE `usuario`
 --
 
 --
--- AUTO_INCREMENT de tabela `cardapio`
+-- AUTO_INCREMENT de tabela `tvbox`
 --
-ALTER TABLE `cardapio`
+ALTER TABLE `tvbox`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT de tabela `usuario`

@@ -11,15 +11,15 @@ class Tabela
   {
     try {
       Transaction::get();
-      $cardapio = new Crud("cardapio");
-      $resultado = $cardapio->select();
+      $tvbox = new Crud("tvbox");
+      $resultado = $tvbox->select();
       $tabela = new Template("view/tabela.html");
       if (is_array($resultado)) {
         $tabela->set("linha", $resultado);
         $this->message = $tabela->saida();
       } else {
-        $this->message = $cardapio->getMessage();
-        $this->error = $cardapio->getError();
+        $this->message = $tvbox->getMessage();
+        $this->error = $tvbox->getError();
       }
     } catch (Exception $e) {
       $this->message = $e->getMessage();
@@ -32,10 +32,10 @@ class Tabela
       try {
         $conexao = Transaction::get();
         $id = $conexao->quote($_GET["id"]);
-        $cardapio = new Crud("cardapio");
-        $cardapio->delete("id = $id");
-        $this->message = $cardapio->getMessage();
-        $this->error = $cardapio->getError();
+        $tvbox = new Crud("tvbox");
+        $tvbox->delete("id = $id");
+        $this->message = $tvbox->getMessage();
+        $this->error = $tvbox->getError();
       } catch (Exception $e) {
         $this->message = $e->getMessage();
         $this->error = true;

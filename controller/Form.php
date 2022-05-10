@@ -11,34 +11,34 @@ class Form
   {
     $form = new Template("view/form.html");
     $form->set("id", "");
-    $form->set("prato", "");
-    $form->set("ingredientes", "");
-    $form->set("preco", "");
+    $form->set("modelo", "");
+    $form->set("processador", "");
+    $form->set("sistemaoperacional", "");
     $this->message = $form->saida();
   }
   public function salvar()
   {
-    if (isset($_POST["prato"]) && isset($_POST["ingredientes"]) && isset($_POST["preco"])) {
+    if (isset($_POST["modelo"]) && isset($_POST["processador"]) && isset($_POST["sistemaoperacional"])) {
       try {
         $conexao = Transaction::get();
-        $cardapio = new Crud("cardapio");
-        $prato = $conexao->quote($_POST["prato"]);
-        $ingredientes = $conexao->quote($_POST["ingredientes"]);
-        $preco = $conexao->quote($_POST["preco"]);
+        $tvbox = new Crud("tvbox");
+        $modelo = $conexao->quote($_POST["modelo"]);
+        $processador = $conexao->quote($_POST["processador"]);
+        $sistemaoperacional = $conexao->quote($_POST["sistemaoperacional"]);
         if (empty($_POST["id"])) {
-          $cardapio->insert(
-            "prato, ingredientes, preco",
-            "$prato, $ingredientes, $preco"
+          $tvbox->insert(
+            "modelo, processador, sistemaoperacional",
+            "$modelo, $processador, $sistemaoperacional"
           );
         } else {
           $id = $conexao->quote($_POST["id"]);
-          $cardapio->update(
-            "prato = $prato, ingredientes = $ingredientes, preco = $preco",
+          $tvbox->update(
+            "modelo = $modelo, processador = $processador, sistemaoperacional = $sistemaoperacional",
             "id = $id"
           );
         }
-        $this->message = $cardapio->getMessage();
-        $this->error = $cardapio->getError();
+        $this->message = $tvbox->getMessage();
+        $this->error = $tvbox->getError();
       } catch (Exception $e) {
         $this->message = $e->getMessage();
         $this->error = true;
@@ -54,16 +54,16 @@ class Form
       try {
         $conexao = Transaction::get();
         $id = $conexao->quote($_GET["id"]);
-        $cardapio = new Crud("cardapio");
-        $resultado = $cardapio->select("*", "id = $id");
-        if (!$cardapio->getError()) {
+        $tvbox = new Crud("tvbox");
+        $resultado = $tvbox->select("*", "id = $id");
+        if (!$tvbox->getError()) {
           $form = new Template("view/form.html");
           foreach ($resultado[0] as $cod => $valor) {
             $form->set($cod, $valor);
           }
           $this->message = $form->saida();
         } else {
-          $this->message = $cardapio->getMessage();
+          $this->message = $tvbox->getMessage();
           $this->error = true;
         }
       } catch (Exception $e) {
