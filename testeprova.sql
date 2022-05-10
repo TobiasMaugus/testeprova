@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Tempo de geração: 19/04/2022 às 08:37
+-- Tempo de geração: 10/05/2022 às 08:03
 -- Versão do servidor: 5.7.37-0ubuntu0.18.04.1
 -- Versão do PHP: 7.2.34-28+ubuntu18.04.1+deb.sury.org+1
 
@@ -17,7 +17,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Banco de dados: `alunos`
+-- Banco de dados: `testeprova`
 --
 
 -- --------------------------------------------------------
@@ -27,24 +27,18 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `tvbox` (
-  `id` int(10) UNSIGNED NOT NULL,
-  `modelo` varchar(100) NOT NULL,
-  `processador` text NOT NULL,
-  `sistemaoperacional` float NOT NULL
+  `id` int(11) NOT NULL,
+  `modelo` varchar(10) NOT NULL,
+  `processador` varchar(255) NOT NULL,
+  `sistemaoperacional` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
--- --------------------------------------------------------
-
 --
--- Estrutura para tabela `usuario`
+-- Fazendo dump de dados para tabela `tvbox`
 --
 
-CREATE TABLE `usuario` (
-  `id` int(10) UNSIGNED NOT NULL,
-  `nome` varchar(50) NOT NULL,
-  `email` varchar(255) NOT NULL,
-  `senha` varchar(70) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+INSERT INTO `tvbox` (`id`, `modelo`, `processador`, `sistemaoperacional`) VALUES
+(2, 'c', 'c', 'c');
 
 --
 -- Índices de tabelas apagadas
@@ -57,12 +51,6 @@ ALTER TABLE `tvbox`
   ADD PRIMARY KEY (`id`);
 
 --
--- Índices de tabela `usuario`
---
-ALTER TABLE `usuario`
-  ADD PRIMARY KEY (`id`);
-
---
 -- AUTO_INCREMENT de tabelas apagadas
 --
 
@@ -70,12 +58,7 @@ ALTER TABLE `usuario`
 -- AUTO_INCREMENT de tabela `tvbox`
 --
 ALTER TABLE `tvbox`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT de tabela `usuario`
---
-ALTER TABLE `usuario`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
